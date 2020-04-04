@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-import re, os, sys, glob;from io import StringIO;from random import randint
+import re, os, sys, glob
+from io import StringIO
+from random import randint
 class string:
     null = ""
     get_expression = str("""
@@ -43,18 +45,25 @@ def main():
     if get == 4: expression = sigs.discover_card
     if get == 5: expression = sigs.Social_security
     if len(extension) <= 2: extension = "txt"
-    if len(directory) <= 4: directory = os.getcwd();os.chdir(directory);count = 0;print(f"\n--------------------------------------------------\nSearching Directory: [{directory}]\n\nUsing Expression: [{expression}]\n------------------------------------------------\n")
+    if len(directory) <= 4: directory = os.getcwd()
+        os.chdir(directory)
+        count = 0
+        print(f"\n--------------------------------------------------\nSearching Directory: [{directory}]\n\nUsing Expression: [{expression}]\n------------------------------------------------\n")
     for file in glob.glob(f"*.{extension}"):
         count += 1
         try:
-            Fname = str(file);file_0 = open(str(file), "r", encoding="utf8");data = str(file_0.read());file_0.close();obj = re.compile(expression, re.IGNORECASE);results = str(obj.findall(data))
+            Fname = str(file)
+            file_0 = open(str(file), "r", encoding="utf8")
+            data = str(file_0.read())
+            file_0.close();obj = re.compile(expression, re.IGNORECASE)
+            results = str(obj.findall(data))
         except Exception as EE:
             hol = str(EE)
             print(f"Decoding Error! - *Skipped File*\n[{hol}]\n")
             pass
         if len(results) > 4:
             print("Hit! Writing To File...")
-            f.write(f"Found in {Fname}; #{Std_count}.\n-------------------------------\n{results}\n-------------------------------\n\n\n")
+            f.write(f"Found in {Fname}
         Std_count = str(count)
         print(str(f"[{Std_count}] - File: {Fname}\n-------------------------------"))
         print(f"""
